@@ -1,25 +1,17 @@
-# AP Optimization Placement Dataset
+# Wi-Fi Access-Point Placement Dataset
 
-Scripts to generate the datasets used in the paper Optimizing AP Placement for Enhancing Indoors UE Localization
+Simulation and data-processing files for the project on optimizing access-point placement for indoor user localization.
 
-## Overview
+## Contents
 
-This repository contains the source code, documentation, and supporting assets for **AP Optimization Placement Dataset**. It is maintained as a focused project workspace with version-controlled implementation and project material.
+- `new_sim.cc`: ns-3 Wi-Fi/building simulation source.
+- `add_building.py`, `clean.py`, and `fix_feed.py`: data transformation utilities.
+- `processed_scenarios.csv` and `transformed_simulations.csv`: committed scenario/simulation artifacts.
 
-## Repository contents
+The C++ source imports custom NYU propagation and channel-condition modules in addition to ns-3 modules.
 
-- `README.md`
-- `add_building.py`
-- `clean.py`
-- `fix_feed.py`
-- `new_sim.cc`
-- `processed_scenarios.csv`
-- `transformed_simulations.csv`
+## Requirements and reproducibility
 
-## Getting started
+A compatible ns-3 workspace with those custom modules is required. The Python utilities require the libraries they import, including pandas and JSON/CSV handling. There is no root requirements file or single runner.
 
-Review the project files and any included configuration or documentation before running the application. Install dependencies using the package manager indicated by the project files, then use the repository's scripts, notebooks, or entry points for development and evaluation.
-
-## Development notes
-
-Keep generated artifacts, local configuration, credentials, and large datasets out of commits unless they are intentionally part of the project. Record significant setup requirements and experiment parameters alongside the relevant component.
+Some scripts use absolute paths from the original development machine. Update those paths and inspect expected delimiters/input columns before running them. This README does not claim regenerated data or simulation results.
