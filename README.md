@@ -1,17 +1,30 @@
-# Wi-Fi Access-Point Placement Dataset
+# Wi-Fi Access-Point Placement and Localization Dataset
 
-Simulation and data-processing files for the project on optimizing access-point placement for indoor user localization.
+Simulation and data-processing material for Wi-Fi access-point placement and indoor localization. An ns-3 C++ scenario generates simulation data; Python utilities transform and clean CSV artifacts used by the project.
 
-## Contents
+## Files and data flow
 
-- `new_sim.cc`: ns-3 Wi-Fi/building simulation source.
-- `add_building.py`, `clean.py`, and `fix_feed.py`: data transformation utilities.
-- `processed_scenarios.csv` and `transformed_simulations.csv`: committed scenario/simulation artifacts.
+- new_sim.cc — ns-3 building/Wi-Fi simulation source.
+- add_building.py — building/scenario data preparation helper.
+- clean.py and fix_feed.py — CSV cleanup/transformation utilities.
+- processed_scenarios.csv and transformed_simulations.csv — committed scenario/simulation artifacts.
 
-The C++ source imports custom NYU propagation and channel-condition modules in addition to ns-3 modules.
+The C++ source imports custom NYU propagation and channel-condition modules in addition to ns-3 modules. Those modules and the matching ns-3 workspace are external prerequisites.
 
-## Requirements and reproducibility
+## Requirements
 
-A compatible ns-3 workspace with those custom modules is required. The Python utilities require the libraries they import, including pandas and JSON/CSV handling. There is no root requirements file or single runner.
+- A compatible ns-3 workspace
+- The custom propagation/channel-condition modules referenced by new_sim.cc
+- Python 3 and the libraries imported by the data utilities, including pandas where used
+- Input CSVs with the columns and delimiters expected by each script
 
-Some scripts use absolute paths from the original development machine. Update those paths and inspect expected delimiters/input columns before running them. This README does not claim regenerated data or simulation results.
+There is no top-level requirements file or unified runner. Some Python scripts use absolute paths from the original development machine; update them for the local checkout before execution.
+
+## Reproduction workflow
+
+1. Build the simulation source in the external ns-3 tree with its custom modules.
+2. Record the scenario parameters and save generated output CSVs.
+3. Check each processing script's expected input path and column schema.
+4. Run the relevant transformation/cleanup scripts and keep raw and processed data separate.
+
+The committed CSVs are project artifacts, but the repository does not document their complete provenance or guarantee a one-command regeneration flow.
